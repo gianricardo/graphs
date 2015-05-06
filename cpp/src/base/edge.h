@@ -24,6 +24,13 @@ public:
     void v0(std::string v0);
     void v1(std::string v1);
     virtual ~Edge();
+    std::string adjcent(std::string v){
+    	if(v==_v0){
+    		return _v1;
+    	}else{
+    		return _v0;
+    	}
+    }
 private:
     std::string _v0, _v1;
     Tipo_Info_Edge _info;
