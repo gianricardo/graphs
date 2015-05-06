@@ -159,7 +159,6 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="algorithms|programa1.cc|base" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/algorithms"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/base"/>
 					</sourceEntries>
 				</configuration>
@@ -223,9 +222,23 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="Graph.cdt.managedbuild.target.gnu.exe.763430348" name="Executable" projectType="cdt.managedbuild.target.gnu.exe"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug-programa2"/>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/Graph"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/Graph"/>
+		</configuration>
+		<configuration configurationName="Release-Programa2"/>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.660632077;cdt.managedbuild.config.gnu.exe.debug.660632077.;cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1028766992;cdt.managedbuild.tool.gnu.c.compiler.input.127281149">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.660632077.1409678614;cdt.managedbuild.config.gnu.exe.debug.660632077.1409678614.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.763873723;cdt.managedbuild.tool.gnu.cpp.compiler.input.1577419759">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.242942890;cdt.managedbuild.config.gnu.exe.release.242942890.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.1971277794;cdt.managedbuild.tool.gnu.cpp.compiler.input.1991267424">
@@ -234,17 +247,11 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.660632077;cdt.managedbuild.config.gnu.exe.debug.660632077.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.904655956;cdt.managedbuild.tool.gnu.cpp.compiler.input.865525926">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.660632077.1409678614;cdt.managedbuild.config.gnu.exe.debug.660632077.1409678614.;cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1373786419;cdt.managedbuild.tool.gnu.c.compiler.input.536823513">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.242942890;cdt.managedbuild.config.gnu.exe.release.242942890.;cdt.managedbuild.tool.gnu.c.compiler.exe.release.486896718;cdt.managedbuild.tool.gnu.c.compiler.input.926915789">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
-	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/Graph"/>
-		</configuration>
-		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/Graph"/>
-		</configuration>
 	</storageModule>
 </cproject>

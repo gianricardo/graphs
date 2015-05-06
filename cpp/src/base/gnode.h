@@ -14,7 +14,7 @@
 
 namespace graphlib {
 
-template<class Tipo_Info_Vertex, class Tipo_Info_Edge = Tipo_Info_Vertex>
+template<class Tipo_Info_GNode, class Tipo_Info_Edge = Tipo_Info_GNode>
 class GNode {
 public:
 	GNode() :
@@ -27,10 +27,10 @@ public:
 		//erase_out_edges();
 	}
 	//
-	Tipo_Info_Vertex info() const {
+	Tipo_Info_GNode info() const {
 		return _info;
 	}
-	void info(Tipo_Info_Vertex i) {
+	void info(Tipo_Info_GNode i) {
 		_info = i;
 	}
 	std::string name() const {
@@ -95,7 +95,7 @@ private:
 		}
 	}
 
-	Tipo_Info_Vertex _info;
+	Tipo_Info_GNode _info;
 	std::string _name;
 	std::list<Edge<Tipo_Info_Edge> *> _edges; //_edge_v0, _edge_v1;
 

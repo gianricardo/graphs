@@ -25,42 +25,44 @@ public:
     }
     //
     void add_from_arc(Arc<Tipo_Info_Arc> *arc) {
-        GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::add_v0_edge(arc);
+        GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::add_edge(arc);
     }
     void add_to_arc(Arc<Tipo_Info_Arc> *arc) {
-        GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::add_v1_edge(arc);
+        _edges_in.push_back(arc);
     }
     void remove_from_arc(Arc<Tipo_Info_Arc> *arc) {
-        GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::remove_v0_edge(arc);
+        GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::remove_edge(arc);
     }
     void remove_to_arc(Arc<Tipo_Info_Arc> *arc) {
-        GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::remove_v1_edge(arc);
+        _edges_in.remove(arc);
     }
     const std::list<std::string> to_vertex_list() const {
-        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::list_to_v1();
+        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::list_adj_nodes();
     }
     Arc<Tipo_Info_Arc>* arc_to(std::string v) {
         return  GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::edge_to(v);
     }
     int degree_out()const {
-        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::degree_v0();
+        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::degree();
     }
 
     int degree_in()const{
-        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::degree_v1();
+        return _edges_in.size();
     }
 
-    int degree()const{
+    int degree()const override {
         return (degree_out()+degree_in());
     }
 
     const std::list<Arc<Tipo_Info_Arc> *> out_arc_list()const{
-        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::list_edge_v0();
+        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::list_edges();
     }
 
     const std::list<Arc<Tipo_Info_Arc> *> in_arc_list()const{
-        return GNode<Tipo_Info_Vertex, Tipo_Info_Arc>::list_edge_v1();
+        return _edges_in;
     }
+private:
+    std::list<Arc<Tipo_Info_Arc> *> _edges_in;
 };
 
 } /* namespace graphlib */
