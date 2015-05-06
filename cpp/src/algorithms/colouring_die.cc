@@ -10,12 +10,15 @@
 namespace graphlib {
 
 Colouring_DIE::Colouring_DIE() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Colouring_DIE::~Colouring_DIE() {
-	// TODO Auto-generated destructor stub
+}
+
+void Colouring_DIE::execute(Graph<Colour> aGraph){
+	/*
+	 * 1-
+	 */
 }
 
 } /* namespace graphlib */
