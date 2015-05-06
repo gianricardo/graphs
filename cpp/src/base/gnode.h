@@ -66,7 +66,7 @@ public:
 		return edge_to_v;
 	}
 
-	const std::list<std::string> list_adj_edges() const {
+	const std::list<std::string> list_adj_nodes() const {
 		std::list<std::string> list_2_v1;
 		for (auto vv : _edges) {
 			list_2_v1.push_back(vv->adjcent(_name));

@@ -51,12 +51,9 @@ public:
                 v_1 = _vertices[v1];
             }
             Edge<Tipo_Info_Edge> *n_edge = new Edge<Tipo_Info_Edge>(v0, v1);
-            Edge<Tipo_Info_Edge> *n_edge_inv = new Edge<Tipo_Info_Edge>(v1, v0);
-            v_0->add_v0_edge(n_edge);
-            v_1->add_v1_edge(n_edge);
+            v_0->add_edge(n_edge);
+            v_1->add_edge(n_edge);
             //
-            v_0->add_v1_edge(n_edge_inv);
-            v_1->add_v0_edge(n_edge_inv);
         }
     }
 
@@ -68,11 +65,8 @@ public:
                 GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_1;
                 v_1 = _vertices[v1];
                 auto edge_erase = v_0->edge_to(v1);
-                v_0->remove_v0_edge(edge_erase);
-                v_1->remove_v1_edge(edge_erase);
-                auto edge_erase2 = v_1->edge_to(v0);
-                v_1->remove_v0_edge(edge_erase2);
-                v_0->remove_v1_edge(edge_erase2);
+                v_0->remove_edge(edge_erase);
+                v_1->remove_edge(edge_erase);
             }
         }
     }
@@ -109,7 +103,7 @@ public:
             output << _name << "\n";
         }
         for (auto position : _vertices) {
-            std::list<std::string> to_v1 = position.second->list_to_v1();
+            std::list<std::string> to_v1 = position.second->list_adj_nodes();
             output << position.second->name();
             for (auto v1 : to_v1) {
                 output << separator << v1;
@@ -173,13 +167,14 @@ public:
                             //std::cout << std::setw(3) << v2;
                             traverse_path.push_back(v2);
                         }
-                        auto edges = v_current->second->list_edge_v0();
+                        auto edges = v_current->second->list_edges();
                         for (auto edge : edges) {
-                            if (!visited[edge->v1()]) {
+                        	std::string name_node=v_current->second->name();
+                            if (!visited[edge->adjcent(name_node)]) {
                                 if (_GRAPH_DEBUG)
-                                    std::cout << "filling queue: " << v_current->second->name() << " - " << edge->v1() << " - " << std::boolalpha
-                                            << visited[edge->v1()] << "\n";
-                                queue_adj.push(edge->v1());
+                                    std::cout << "filling queue: " << v_current->second->name() << " - " << edge->adjcent(name_node) << " - " << std::boolalpha
+                                            << visited[edge->adjcent(name_node)] << "\n";
+                                queue_adj.push(edge->adjcent(name_node));
                             }
                         }
                     } while (!queue_adj.empty());
@@ -294,16 +289,14 @@ private:
             GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_cur) const {
         vb[vertex_source] = true;
         traverse_path.push_back(vertex_source);
-        //std::cout << std::setw(4) << vertex_source;
-        //std::list<std::string> la = adjacent_vertices_list(vertex_source);
-        auto edges = v_cur->list_edge_v0();
+        auto edges = v_cur->list_edges();
         for (auto edge : edges) {
             if (_GRAPH_DEBUG)
-                std::cout << "traverse: " << edge->v1() << " - " << std::boolalpha << vb[edge->v1()] << "\n";
-            if (!vb[edge->v1()]) {
+                std::cout << "traverse: " << edge->adjcent(vertex_source) << " - " << std::boolalpha << vb[edge->adjcent(vertex_source)] << "\n";
+            if (!vb[edge->adjcent(vertex_source)]) {
                 if (_GRAPH_DEBUG)
-                    std::cout << "traversing: " << edge->v1() << " - " << std::boolalpha << vb[edge->v1()] << "\n";
-                traverse(edge->v1(), vb, traverse_path, v_cur);
+                    std::cout << "traversing: " << edge->adjcent(vertex_source) << " - " << std::boolalpha << vb[edge->adjcent(vertex_source)] << "\n";
+                traverse(edge->adjcent(vertex_source), vb, traverse_path, v_cur);
             }
         }
     }
