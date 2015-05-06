@@ -1,11 +1,11 @@
 /*
- * vertex.cc
+ * gnode.cc
  *
  *  Created on: Apr 24, 2015
  *      Author: gian
  */
 
-#include "vertexbase.h"
+#include "gnode.h"
 
 namespace graphlib {
 

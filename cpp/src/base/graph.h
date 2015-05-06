@@ -15,7 +15,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "vertexbase.h"
+
+#include "gnode.h"
 
 #define _GRAPH_DEBUG false
 
@@ -34,17 +35,17 @@ public:
         erase();
     }
     virtual void add_edge(std::string v0, std::string v1) {
-        VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge> *v_0;
+        GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_0;
         if (!exist_vertex(v0)) {
-            v_0 = new VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge>(v0);
+            v_0 = new GNode<Tipo_Info_Vertex, Tipo_Info_Edge>(v0);
             _vertices.insert(std::make_pair(v0, v_0));
         } else {
             v_0 = _vertices[v0];
         }
         if (!v_0->exist_edge_to(v1)) {
-            VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge> *v_1;
+            GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_1;
             if (!exist_vertex(v1)) {
-                v_1 = new VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge>(v1);
+                v_1 = new GNode<Tipo_Info_Vertex, Tipo_Info_Edge>(v1);
                 _vertices.insert(std::make_pair(v1, v_1));
             } else {
                 v_1 = _vertices[v1];
@@ -60,11 +61,11 @@ public:
     }
 
     virtual void erase_edge(std::string v0, std::string v1) {
-        VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge> *v_0;
+        GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_0;
         if (exist_vertex(v0) && exist_vertex(v1)) {
             v_0 = _vertices[v0];
             if (v_0->exist_edge_to(v1)) {
-                VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge> *v_1;
+                GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_1;
                 v_1 = _vertices[v1];
                 auto edge_erase = v_0->edge_to(v1);
                 v_0->remove_v0_edge(edge_erase);
@@ -126,7 +127,7 @@ public:
     int vertex_degree(std::string vertex) const {
 
         if (exist_vertex(vertex)) {
-            VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge> *v;
+            GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v;
             v = _vertices[vertex];
             return v->degree();
         }
@@ -290,7 +291,7 @@ public:
 
 private:
     void traverse(std::string vertex_source, std::map<std::string, bool>& vb, std::list<std::string>& traverse_path,
-            VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge> *v_cur) const {
+            GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_cur) const {
         vb[vertex_source] = true;
         traverse_path.push_back(vertex_source);
         //std::cout << std::setw(4) << vertex_source;
@@ -307,7 +308,7 @@ private:
         }
     }
     //
-    std::map<std::string, VertexBase<Tipo_Info_Vertex, Tipo_Info_Edge> *> _vertices;
+    std::map<std::string, GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> _vertices;
     std::string _name;
 };
 
