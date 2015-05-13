@@ -22,6 +22,7 @@ public:
 	}
 	GNode(std::string name) :
 			_name(name) {
+		_name=name;
 	}
 	virtual ~GNode() {
 		//erase_out_edges();
@@ -65,6 +66,7 @@ public:
 		}
 		return edge_to_v;
 	}
+
 
 	const std::list<std::string> list_adj_nodes() const {
 		std::list<std::string> list_2_v1;

@@ -8,8 +8,8 @@
 #ifndef COLOURING_DIE_H_
 #define COLOURING_DIE_H_
 
-#include "colour.h"
-#include "graph.h"
+#include "../base/colour.h"
+#include "../base/graph.h"
 
 
 namespace graphlib {

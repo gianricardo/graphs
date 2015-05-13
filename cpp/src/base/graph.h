@@ -33,6 +33,7 @@ public:
     }
     virtual ~Graph() {
         erase();
+        std::cout << "Destrutor Grafo\n";
     }
     virtual void add_edge(std::string v0, std::string v1) {
         GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_0;
@@ -78,6 +79,10 @@ public:
     bool exist_vertex(std::string sv) const {
         auto i_search = _vertices.find(sv);
         return (i_search != _vertices.end());
+    }
+
+    GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *get_vertex(std::string vertex_name){
+    	return _vertices[vertex_name];
     }
 
     /**
@@ -189,6 +194,14 @@ public:
         return traverse_path;
     }
 
+    std::list<GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> vertices_list() const {
+        std::list<GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> vertices;
+        for (auto position : _vertices){
+        	vertices.push_back(position.second);
+        }
+        return vertices;
+    }
+
     std::list<std::string> adjacent_vertices_list(std::string vertex) const {
         std::list<std::string> adjacent;
         if (exist_vertex(vertex)) {
@@ -284,6 +297,8 @@ public:
         }
     }
 
+    //TODO Método que retorne lista de vértices
+
 private:
     void traverse(std::string vertex_source, std::map<std::string, bool>& vb, std::list<std::string>& traverse_path,
             GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_cur) const {
@@ -301,8 +316,10 @@ private:
         }
     }
     //
-    std::map<std::string, GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> _vertices;
+
     std::string _name;
+protected:
+    std::map<std::string, GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> _vertices;
 };
 
 } /* namespace graphlib */
