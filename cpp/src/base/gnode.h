@@ -78,7 +78,7 @@ public:
 
 	}
 
-	int degree() const {
+	virtual int degree() const {
 		return (_edges.size());
 	}
 
