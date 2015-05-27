@@ -297,7 +297,9 @@ public:
         }
     }
 
-    //TODO Método que retorne lista de vértices
+    std::map<std::string, GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> vertices(){
+    	return _vertices;
+    }
 
 private:
     void traverse(std::string vertex_source, std::map<std::string, bool>& vb, std::list<std::string>& traverse_path,
