@@ -8,8 +8,9 @@
 #ifndef PMEDIANS_H_
 #define PMEDIANS_H_
 
-#include "../base/graph.h"
-
+#include "../base/digraph.h"
+#include "../base/weight.h"
+#include <vector>
 
 namespace graphlib {
 
@@ -19,10 +20,10 @@ public:
 	virtual ~P_medians();
 	void execute(Digraph<Weight> someDigraph, int med_number);
 private:
-	double transmission(std::list<Vertex<Weight>> set_S);
-	double min_trans(Vertex<Weight>x, std::list<Vertex<Weight>> set_S);
+	double transmission(std::vector<Vertex<Weight>> set_S);
+	double min_trans(Vertex<Weight>x, std::vector<Vertex<Weight>> set_S);
 };
 
-} /*namespace graphlib /*
+} /*namespace graphlib */
 
 #endif /* PMEDIANS_H_ */

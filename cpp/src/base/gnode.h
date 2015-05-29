@@ -14,7 +14,7 @@
 
 namespace graphlib {
 
-template<class Tipo_Info_GNode, class Tipo_Info_Edge = Tipo_Info_GNode>
+template<class Tipo_Info_GNode, class Tipo_Info_Edge = Tipo_Info_GNode, class Edge_Class=Edge<Tipo_Info_Edge> >
 class GNode {
 public:
 	GNode() :
@@ -38,10 +38,10 @@ public:
 		return _name;
 	}
 	//
-	void add_edge(Edge<Tipo_Info_Edge> *edge) {
+	void add_edge(Edge_Class *edge) {
 		_edges.push_back(edge);
 	}
-	void remove_edge(Edge<Tipo_Info_Edge> *edge) {
+	void remove_edge(Edge_Class *edge) {
 		_edges.remove(edge);
 	}
 	//
@@ -56,8 +56,8 @@ public:
 		return exist_edge;
 	}
 
-	Edge<Tipo_Info_Edge>* edge_to(std::string v) {
-		Edge<Tipo_Info_Edge>* edge_to_v = nullptr;
+	Edge_Class* edge_to(std::string v) {
+	    Edge_Class* edge_to_v = nullptr;
 		for (auto vv : _edges) {
 			if (vv->adjcent(_name) == v) {
 				edge_to_v = vv;
@@ -82,7 +82,7 @@ public:
 		return (_edges.size());
 	}
 
-	const std::list<Edge<Tipo_Info_Edge> *> list_edges() const {
+	const std::list<Edge_Class *> list_edges() const {
 		return _edges;
 	}
 
@@ -99,7 +99,7 @@ private:
 
 	Tipo_Info_GNode _info;
 	std::string _name;
-	std::list<Edge<Tipo_Info_Edge> *> _edges; //_edge_v0, _edge_v1;
+	std::list<Edge_Class *> _edges;
 
 };
 

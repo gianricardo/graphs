@@ -13,6 +13,7 @@ namespace graphlib {
 class WeightDij {
 public:
 	WeightDij(bool visitado, double peso);
+	WeightDij()=default;
 	virtual ~WeightDij();
 	void visitado(bool v);
 	bool visitado();

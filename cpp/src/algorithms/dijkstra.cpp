@@ -13,12 +13,9 @@
 namespace graphlib {
 
 Dijkstra::Dijkstra() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Dijkstra::~Dijkstra() {
-	// TODO Auto-generated destructor stub
 }
 
 double Dijkstra::execute(Digraph<WeightDijV, WeightDij> someDigraph,
@@ -36,21 +33,22 @@ double Dijkstra::execute(Digraph<WeightDijV, WeightDij> someDigraph,
 	wd.dist_origem(0);
 	v_origem->info(wd);
 
-	std::map<std::string, GNode<WeightDijV, WeightDij> *> set_q;
+	std::map<std::string, Vertex<WeightDijV, WeightDij> *> set_q;
 	for (auto v : vertices) {
 		set_q.insert(std::make_pair(v.first, v.second));
 	}
 
 	while (!set_q.empty()) {
 		auto v = set_q.begin();
-		for (auto temp_v : set_q) {
-			if (temp_v.second->info().dist_origem() < v->second->info().dist_origem()) {
-				v = &temp_v;
+		for (auto temp_v=set_q.begin();temp_v!=set_q.end(); temp_v++) {
+			if (temp_v->second->info().dist_origem() < v->second->info().dist_origem()) {
+				v = temp_v;
 			}
 		}
 		std::cout<<"Apagando v "<<v->second->name()<<"\n";
 		set_q.erase(v);
 	}
+	return 0.0;
 }
 
 } /* namespace graphlib */
@@ -83,11 +81,11 @@ double Dijkstra::execute(Digraph<WeightDijV, WeightDij> someDigraph,
  std::list<Vertex<Weight>> Q(someDigraph.vertices_list());
 
  while(!Q.empty()){
- for(Vertex<Weight> u : Q){ //encontrar v pertencente a Q o qual D[v] é mínima;
+ for(Vertex<Weight> u : Q){ //encontrar v pertencente a Q o qual D[v] ï¿½ mï¿½nima;
  for(Vertex<Weight> v : u.list_adj_nodes()){
  Arc<Weight>	dist = u.edge_to(v);
  Q.remove(u);
- if(d[u]>dist.info().value()/* +w(v,u) * /){
+ if(d[u]>dist.info().value()/ * +w(v,u) * /){
  d[u] = dist.info().value();//+w(v,u);
  p.push_back(u);
  }

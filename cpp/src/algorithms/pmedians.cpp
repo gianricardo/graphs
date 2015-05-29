@@ -9,11 +9,13 @@ P_medians::P_medians(){
 
 }
 
-virtual P_medians::~P_medians(){
+P_medians::~P_medians(){
 
 }
 
 void P_medians::execute(Digraph<Weight> someDigraph, int med_number){
+
+/*
 std::vector<Vertex<Weight>> medians_S(med_number), aux, naotestados,testados;
 aux = someDigraph.vertices_list();
 Vertex<Weight> add1;
@@ -46,6 +48,7 @@ if(delta_max<=0){
 	//fazer teste para colocar ver se coloca xi ou xj em testados
 }
 
+*/
 }
 
 double P_medians::transmission(std::vector<Vertex<Weight>> set_S){

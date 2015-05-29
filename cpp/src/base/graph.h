@@ -22,7 +22,9 @@
 
 namespace graphlib {
 
-template<class Tipo_Info_Vertex, class Tipo_Info_Edge = Tipo_Info_Vertex>
+template<class Tipo_Info_Vertex, class Tipo_Info_Edge = Tipo_Info_Vertex,
+        class Edge_Class=Edge<Tipo_Info_Edge> ,
+        class Vertex_Class = GNode<Tipo_Info_Vertex, Tipo_Info_Edge,Edge_Class> >
 class Graph {
 public:
     Graph() :
@@ -36,22 +38,22 @@ public:
         std::cout << "Destrutor Grafo\n";
     }
     virtual void add_edge(std::string v0, std::string v1) {
-        GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_0;
+        Vertex_Class *v_0;
         if (!exist_vertex(v0)) {
-            v_0 = new GNode<Tipo_Info_Vertex, Tipo_Info_Edge>(v0);
+            v_0 = new Vertex_Class(v0);
             _vertices.insert(std::make_pair(v0, v_0));
         } else {
             v_0 = _vertices[v0];
         }
         if (!v_0->exist_edge_to(v1)) {
-            GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_1;
+            Vertex_Class *v_1;
             if (!exist_vertex(v1)) {
-                v_1 = new GNode<Tipo_Info_Vertex, Tipo_Info_Edge>(v1);
+                v_1 = new Vertex_Class(v1);
                 _vertices.insert(std::make_pair(v1, v_1));
             } else {
                 v_1 = _vertices[v1];
             }
-            Edge<Tipo_Info_Edge> *n_edge = new Edge<Tipo_Info_Edge>(v0, v1);
+            Edge_Class *n_edge = new Edge_Class(v0, v1);
             v_0->add_edge(n_edge);
             v_1->add_edge(n_edge);
             //
@@ -59,11 +61,11 @@ public:
     }
 
     virtual void erase_edge(std::string v0, std::string v1) {
-        GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_0;
+        Vertex_Class *v_0;
         if (exist_vertex(v0) && exist_vertex(v1)) {
             v_0 = _vertices[v0];
             if (v_0->exist_edge_to(v1)) {
-                GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_1;
+                Vertex_Class *v_1;
                 v_1 = _vertices[v1];
                 auto edge_erase = v_0->edge_to(v1);
                 v_0->remove_edge(edge_erase);
@@ -76,13 +78,13 @@ public:
         return _vertices.size();
     }
 
-    bool exist_vertex(std::string sv) const {
+    bool exist_vertex(std::string sv) {
         auto i_search = _vertices.find(sv);
         return (i_search != _vertices.end());
     }
 
-    GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *get_vertex(std::string vertex_name){
-    	return _vertices[vertex_name];
+    Vertex_Class *get_vertex(std::string vertex_name) {
+        return _vertices[vertex_name];
     }
 
     /**
@@ -123,10 +125,10 @@ public:
      * @param vertex the vertex's name
      * @return degree
      */
-    int vertex_degree(std::string vertex) const {
+    int vertex_degree(std::string vertex) {
 
         if (exist_vertex(vertex)) {
-            GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v;
+            Vertex_Class *v;
             v = _vertices[vertex];
             return v->degree();
         }
@@ -174,7 +176,7 @@ public:
                         }
                         auto edges = v_current->second->list_edges();
                         for (auto edge : edges) {
-                        	std::string name_node=v_current->second->name();
+                            std::string name_node = v_current->second->name();
                             if (!visited[edge->adjcent(name_node)]) {
                                 if (_GRAPH_DEBUG)
                                     std::cout << "filling queue: " << v_current->second->name() << " - " << edge->adjcent(name_node) << " - " << std::boolalpha
@@ -194,15 +196,15 @@ public:
         return traverse_path;
     }
 
-    std::list<GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> vertices_list() const {
-        std::list<GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> vertices;
-        for (auto position : _vertices){
-        	vertices.push_back(position.second);
+    std::list<Vertex_Class *> vertices_list() const {
+        std::list<Vertex_Class *> vertices;
+        for (auto position : _vertices) {
+            vertices.push_back(position.second);
         }
         return vertices;
     }
 
-    std::list<std::string> adjacent_vertices_list(std::string vertex) const {
+    std::list<std::string> adjacent_vertices_list(std::string vertex) {
         std::list<std::string> adjacent;
         if (exist_vertex(vertex)) {
             adjacent = _vertices[vertex]->list_to_v1();
@@ -297,13 +299,12 @@ public:
         }
     }
 
-    std::map<std::string, GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> vertices(){
-    	return _vertices;
+    std::map<std::string, Vertex_Class *> vertices() {
+        return _vertices;
     }
 
 private:
-    void traverse(std::string vertex_source, std::map<std::string, bool>& vb, std::list<std::string>& traverse_path,
-            GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *v_cur) const {
+    void traverse(std::string vertex_source, std::map<std::string, bool>& vb, std::list<std::string>& traverse_path, Vertex_Class *v_cur) const {
         vb[vertex_source] = true;
         traverse_path.push_back(vertex_source);
         auto edges = v_cur->list_edges();
@@ -321,7 +322,7 @@ private:
 
     std::string _name;
 protected:
-    std::map<std::string, GNode<Tipo_Info_Vertex, Tipo_Info_Edge> *> _vertices;
+    std::map<std::string, Vertex_Class *> _vertices;
 };
 
 } /* namespace graphlib */

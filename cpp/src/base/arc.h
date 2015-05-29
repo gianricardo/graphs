@@ -14,7 +14,10 @@ namespace graphlib {
 
 template<class Tipo_Info_Arc>
 class Arc: public Edge<Tipo_Info_Arc> {
+    typedef Edge<Tipo_Info_Arc> base;
 public:
+    using base::v0;
+    using base::v1;
     Arc(){
     }
     Arc(std::string from,std::string to) : Edge<Tipo_Info_Arc>(from, to) {
@@ -23,16 +26,16 @@ public:
     }
     //
     std::string from() const {
-        return Edge<Tipo_Info_Arc>::v0();
+        return v0();
     }
     std::string to() const {
-        return Edge<Tipo_Info_Arc>::v1();
+        return v1();
     }
     void from(std::string f){
-        Edge<Tipo_Info_Arc>::v0(f);
+        v0(f);
     }
     void to(std::string f){
-        Edge<Tipo_Info_Arc>::v1(f);
+        v1(f);
     }
 };
 

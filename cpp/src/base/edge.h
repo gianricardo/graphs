@@ -16,7 +16,7 @@ template<class Tipo_Info_Edge>
 class Edge {
 public:
     Edge();
-    Edge(std::string v0, std::string v1);
+    Edge(std::string v0, std::string v1): _v0(v0), _v1(v1) {}
     std::string v0() const;
     std::string v1() const;
     Tipo_Info_Edge info() const;
@@ -39,11 +39,6 @@ private:
 template<class Tipo_Info_Edge>
 Edge<Tipo_Info_Edge>::Edge() :
         _v0(""), _v1("") {
-}
-
-template<class Tipo_Info_Edge>
-Edge<Tipo_Info_Edge>::Edge(std::string v0, std::string v1) :
-        _v0(v0), _v1(v1) {
 }
 
 template<class Tipo_Info_Edge>
