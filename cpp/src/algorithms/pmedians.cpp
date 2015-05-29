@@ -52,7 +52,7 @@ if(delta_max<=0){
 }
 
 double P_medians::transmission(std::vector<Vertex<Weight>> set_S){
-	double total;
+	double total=0;
 	for(auto x : set_S){
 		total = x.info().value();//*min(x,set_S);
 	}

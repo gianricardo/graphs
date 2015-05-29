@@ -15,7 +15,7 @@ namespace graphlib {
 class WeightDijV : public WeightDij{
 public:
 	WeightDijV(bool visitado, double peso, double dist_origem);
-	WeightDijV()=default;
+	WeightDijV():_dist_origem(0){}
 	virtual ~WeightDijV();
 	void dist_origem(double d);
 	double dist_origem();
