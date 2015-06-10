@@ -16,7 +16,10 @@ public:
 	Colour(long code);
 	virtual ~Colour();
 	void code(long code);
-	long code(void)const;
+	long code(void) const;
+	bool operator<(const Colour& o_c) {
+		return _colour_code < o_c.code();
+	}
 private:
 	long _colour_code;
 };
