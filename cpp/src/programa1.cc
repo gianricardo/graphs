@@ -44,8 +44,6 @@ cout << endl << endl;
     	cout << "Nome do vertice: "<< ww->name() << " Cor: " << k.code() << endl;
     }
 
-    //TODO Erro de vazamento de memória ao acessar o nome do vértice.
     return 0;
-    //file:///home/gian/Downloads/roadnet/roadnet.edge
 }
 

@@ -15,7 +15,6 @@ WeightDij::WeightDij(bool visitado, double peso) {
 }
 
 WeightDij::~WeightDij() {
-	// TODO Auto-generated destructor stub
 }
 
 void WeightDij::visitado(bool v){

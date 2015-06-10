@@ -15,7 +15,6 @@ WeightDijV::WeightDijV(bool visitado, double peso, double dist_origem):WeightDij
 }
 
 WeightDijV::~WeightDijV() {
-	// TODO Auto-generated destructor stub
 }
 
 void WeightDijV::dist_origem(double d){
