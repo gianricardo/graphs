@@ -51,7 +51,6 @@ public:
 	void add_arc(std::string from, std::string to, Tipo_Info_Arc &infoa) {
 		add_arc(from, to);
 		_last_included_arc->info(infoa);
-
 	}
 
 	void info_vertex(std::string vertex, Tipo_Info_Vertex &infov) {

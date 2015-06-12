@@ -8,20 +8,21 @@
 #ifndef WEIGHTDIJ_H_
 #define WEIGHTDIJ_H_
 
+#include "weight.h"
+
 namespace graphlib {
 
-class WeightDij {
+class WeightDij : public Weight {
 public:
-	WeightDij(bool visitado, double peso);
-	WeightDij():_visitado(false),_peso(1){}
+	WeightDij(double peso,bool visitado=false):Weight(peso) {
+	    _visitado = visitado;
+	}
+	WeightDij():Weight(1),_visitado(false){}
 	virtual ~WeightDij();
 	void visitado(bool v);
 	bool visitado();
-	void peso(double p);
-	double peso();
 private:
 	bool _visitado;
-	double _peso;
 };
 
 } /* namespace graphlib */

@@ -9,10 +9,9 @@
 
 namespace graphlib {
 
-WeightDij::WeightDij(bool visitado, double peso) {
-	_visitado = visitado;
-	_peso = peso;
-}
+//WeightDij::WeightDij( double peso,bool visitado=false) :Weight(peso) {
+//	_visitado = visitado;
+//}
 
 WeightDij::~WeightDij() {
 }
@@ -24,14 +23,5 @@ void WeightDij::visitado(bool v){
 bool WeightDij::visitado(){
 	return _visitado;
 }
-
-void WeightDij::peso(double p){
-	_peso = p;
-}
-
-double WeightDij::peso(){
-	return _peso;
-}
-
 
 } /* namespace graphlib */

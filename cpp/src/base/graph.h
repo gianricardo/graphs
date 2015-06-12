@@ -28,10 +28,11 @@ template<class Tipo_Info_Vertex, class Tipo_Info_Edge = Tipo_Info_Vertex,
 class Graph {
 public:
     Graph() :
-            _name("Graph untitled") {
+        Graph("Graph untitled") {
     }
-    Graph(std::string name) :
-            _name(name) {
+    Graph(std::string name,bool isMultigraph=false) :
+            _name(name),_isMultigraph(isMultigraph) {
+        _last_included_edge=nullptr;
     }
     virtual ~Graph() {
         erase();
@@ -56,8 +57,14 @@ public:
             Edge_Class *n_edge = new Edge_Class(v0, v1);
             v_0->add_edge(n_edge);
             v_1->add_edge(n_edge);
+            _last_included_edge = n_edge;
             //
         }
+    }
+
+    virtual void add_edge(std::string from, std::string to, Tipo_Info_Edge &info_edge) {
+        add_edge(from, to);
+        _last_included_edge->info(info_edge);
     }
 
     virtual void erase_edge(std::string v0, std::string v1) {
@@ -303,6 +310,9 @@ public:
         return _vertices;
     }
 
+    bool isMultigraph(){
+        return _isMultigraph;
+    }
 private:
     void traverse(std::string vertex_source, std::map<std::string, bool>& vb, std::list<std::string>& traverse_path, Vertex_Class *v_cur) const {
         vb[vertex_source] = true;
@@ -323,6 +333,8 @@ private:
     std::string _name;
 protected:
     std::map<std::string, Vertex_Class *> _vertices;
+    Edge_Class *_last_included_edge;
+    bool _isMultigraph;//todo implementar o suporte a multigrafo
 };
 
 } /* namespace graphlib */

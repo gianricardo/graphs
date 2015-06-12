@@ -12,17 +12,24 @@ namespace graphlib {
 
 class Weight {
 public:
-	Weight();
-	Weight(double value);
-	virtual ~Weight();
-	void value(double value);
-	double value(void)const;
-	bool operator<(const Weight& o_w){
-		std::cout << "Comparando";
-	    	return _w<o_w.value();
-	 }
+    Weight();
+    Weight(double value);
+    virtual ~Weight();
+    void value(double value);
+    double value(void) const;
+    bool operator<(const Weight& o_w) {
+        return _w < o_w.value();
+    }
+    bool operator>(const Weight& o_w) {
+//        std::cout << "111";
+        return _w > o_w.value();
+    }
+    Weight& operator*(){
+        return *this;
+    }
+
 private:
-	double _w;
+    double _w;
 };
 
 } //namespace graphlib
