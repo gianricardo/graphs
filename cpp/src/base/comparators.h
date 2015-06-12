@@ -8,9 +8,13 @@
 #ifndef COMPARATORS_H_
 #define COMPARATORS_H_
 
-#include "weight.h"
 #include "edge.h"
 #include <type_traits>
+
+/**
+ * Esse código está aqui para teste.
+ * Os métodos compEdge e compEdgeGreater foram movidos para a classe Edge.
+ */
 
 namespace graphlib {
 template<class TWeight>

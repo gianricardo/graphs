@@ -37,7 +37,7 @@ std::list<Edge<WeightDij>*> Kruskal::execute(Graph<WeightDijV, WeightDij> someGr
     auto it = std::unique(L.begin(), L.end());
     L.resize(std::distance(L.begin(), it));
     //DONE precisa ordenar edges em L de forma crescente por peso
-    std::sort(L.begin(), L.end(), CompEdge<WeightDij>::compEdgeGreater);
+    std::sort(L.begin(), L.end(), Edge<WeightDij>::compEdgeGreater);
 //    for (auto edge : L) {
 //        std::cout << edge->v0() << " <-> " << edge->v1() << " : " << edge->info().value() << std::endl;
 //    }

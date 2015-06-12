@@ -9,18 +9,6 @@
 #include <iostream>
 #include <iomanip>
 
-/*
- * TODO Digrafo
- * TODO Multigrafo
- * TODO Grafo ponderado
- * TODO conj. independetes
- * TODO scp
- * TODO spp
- * TODO coloracao
- * TODO planar
- *
- */
-
 int main(int argc, char **argv) {
     graphlib::Graph<int> grafo("Roadnet");
     std::cout << "Loading...";

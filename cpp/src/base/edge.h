@@ -10,6 +10,7 @@
 
 #include <string>
 #include <iostream>
+#include <type_traits>
 
 namespace graphlib {
 
@@ -44,6 +45,20 @@ public:
     bool operator<(const Edge<Tipo_Info_Edge>*& o_edge) {
         //std::cout << "ComparandoE2";
         return _info < o_edge->info();
+    }
+    static bool compEdge(const Edge<Tipo_Info_Edge>* lhs, const Edge<Tipo_Info_Edge>* rhs) {
+        if (std::is_pointer<Tipo_Info_Edge>::value) {
+            return *lhs->info() < *rhs->info();
+        } else {
+            return lhs->info() < rhs->info();
+        }    }
+    static bool compEdgeGreater(const Edge<Tipo_Info_Edge>* lhs, const Edge<Tipo_Info_Edge>* rhs) {
+        if (std::is_pointer<Tipo_Info_Edge>::value) {
+            return *lhs->info() > *rhs->info();
+        } else {
+            return lhs->info() > rhs->info();
+        }
+
     }
 
 private:

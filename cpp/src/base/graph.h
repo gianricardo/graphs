@@ -22,22 +22,27 @@
 
 namespace graphlib {
 
-template<class Tipo_Info_Vertex, class Tipo_Info_Edge = Tipo_Info_Vertex,
-        class Edge_Class=Edge<Tipo_Info_Edge> ,
-        class Vertex_Class = GNode<Tipo_Info_Vertex, Tipo_Info_Edge,Edge_Class> >
+template<class Tipo_Info_Vertex, class Tipo_Info_Edge = Tipo_Info_Vertex, class Edge_Class = Edge<Tipo_Info_Edge>, class Vertex_Class = GNode<Tipo_Info_Vertex,
+        Tipo_Info_Edge, Edge_Class> >
 class Graph {
 public:
     Graph() :
-        Graph("Graph untitled") {
+            Graph("Graph untitled") {
     }
-    Graph(std::string name,bool isMultigraph=false) :
-            _name(name),_isMultigraph(isMultigraph) {
-        _last_included_edge=nullptr;
+    Graph(std::string name, bool isMultigraph = false) :
+            _name(name), _isMultigraph(isMultigraph) {
+        _last_included_edge = nullptr;
     }
     virtual ~Graph() {
         erase();
-        std::cout << "Destrutor Grafo\n";
+        if (_GRAPH_DEBUG)
+            std::cout << "Destrutor Grafo\n";
     }
+
+    std::string name() {
+        return _name;
+    }
+
     virtual void add_edge(std::string v0, std::string v1) {
         Vertex_Class *v_0;
         if (!exist_vertex(v0)) {
@@ -310,7 +315,7 @@ public:
         return _vertices;
     }
 
-    bool isMultigraph(){
+    bool isMultigraph() {
         return _isMultigraph;
     }
 private:
@@ -334,7 +339,7 @@ private:
 protected:
     std::map<std::string, Vertex_Class *> _vertices;
     Edge_Class *_last_included_edge;
-    bool _isMultigraph;//todo implementar o suporte a multigrafo
+    bool _isMultigraph; //todo implementar o suporte a multigrafo
 };
 
 } /* namespace graphlib */
