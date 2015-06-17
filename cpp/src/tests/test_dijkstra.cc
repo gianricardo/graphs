@@ -31,7 +31,10 @@ void test_dijkstra(){
 	teste.info_vertex("5",v5);
 
 	graphlib::Dijkstra busca;
-	busca.execute(teste,"1","3");
+	teste.print(std::cout);
+	std::cout << "\n";
+	double x = busca.execute(teste,"1","3")
+	std::cout << x;
 }
 
 

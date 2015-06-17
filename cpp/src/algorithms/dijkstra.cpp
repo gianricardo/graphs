@@ -40,15 +40,30 @@ double Dijkstra::execute(Digraph<WeightDijV, WeightDij> someDigraph,
 
 	while (!set_q.empty()) {
 		auto v = set_q.begin();
-		for (auto temp_v=set_q.begin();temp_v!=set_q.end(); temp_v++) {
-			if (temp_v->second->info().dist_origem() < v->second->info().dist_origem()) {
+		for (auto temp_v = set_q.begin(); temp_v != set_q.end(); temp_v++) {
+			if (temp_v->second->info().dist_origem()
+					< v->second->info().dist_origem()) {
 				v = temp_v;
 			}
-		}
-		std::cout<<"Apagando v "<<v->second->name()<<"\n";
+			auto adj_v = v->second->list_adj_nodes();
+			for (auto u : adj_v) {
+				auto search = set_q.find(u);
+				if (search != set_q.end()) {
+					auto aux = v->second->edge_to(u);
+					if (search->second->info().dist_origem() > v->second->info().dist_origem() + aux->info().value()) {
+						double x = v->second->info().dist_origem() + aux->info().value();
+						search->second->info().dist_origem(x);
+
+				}
+			  }
+			}
+		  }
+		//std::cout<<"Apagando v "<<v->second->name()<<"\n";
 		set_q.erase(v);
 	}
-	return 0.0;
+	auto final = vertices[end];
+	double distancia = final->info().dist_origem();
+	return distancia;
 }
 
 } /* namespace graphlib */
