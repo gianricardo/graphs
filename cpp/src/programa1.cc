@@ -9,9 +9,7 @@
 
 int main(int argc, char **argv) {
 
-    //graphlib::Graph_IO<graphlib::Graph<int>> io;
-    //graphlib::Graph<int> grafo_lido = io.load_from_file("exemplo1.edge");
-    test_kruskal();
+    test_dijkstra();
     return 0;
 
 }

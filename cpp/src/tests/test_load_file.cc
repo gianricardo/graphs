@@ -1,15 +1,16 @@
 /*
- * programa1.cc
+ * test_load_file.cc
  *
- *  Created on: Apr 24, 2015
+ *  Created on: Jun 17, 2015
  *      Author: gian
  */
 
-#include "base/graph.h"
+#include "tests.h"
+#include "../base/graph.h"
 #include <iostream>
 #include <iomanip>
 
-int main(int argc, char **argv) {
+void test_load_file(){
     graphlib::Graph<int> grafo("Roadnet");
     std::cout << "Loading...";
     std::cout.flush();
@@ -45,6 +46,7 @@ int main(int argc, char **argv) {
             q=0;
         }
     }*/
-    return 0;
+
 }
+
 
