@@ -43,6 +43,10 @@ public:
         return _name;
     }
 
+    void name(std::string name) {
+        _name = name;
+    }
+
     virtual void add_edge(std::string v0, std::string v1) {
         Vertex_Class *v_0;
         if (!exist_vertex(v0)) {
@@ -98,6 +102,8 @@ public:
     Vertex_Class *get_vertex(std::string vertex_name) {
         return _vertices[vertex_name];
     }
+
+
 
     /**
      * Removes all edges and vertices from the graph.

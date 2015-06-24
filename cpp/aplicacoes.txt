@@ -1,0 +1,34 @@
+* Reallocation of Housing
+* Assortment of Struotural Steel Beams
+* Tournament Problem
+* Leveling Mountainous Terrain
+* Rewiring of Typewriters
+* Pairing Stereo Speakers
+* Measuring Homogeneity of Bimetallio Objects
+* Electrical Networks
+* Determining an Optimal Energy Policy
+* Racial Balancing of Schools
+* Dating problem
+* Seat-sharing problem
+* Police patrol problem
+* Large-scale personnel assignment
+* Crew Scheduling
+* Forest scheduling problem.
+* Communication Systems
+* Production-Distribution Systems
+* Facility location
+* Railroad. transportation systems
+* Foodgrain export-import network
+* Warehousing of Seasonal Products
+* Multivehicle Tanker Scheduling
+* Optimal Destruction of Military Targets
+* terrorist networks
+* complex plumbing systems
+* classification schemas
+* viral tranmissions
+* supply chain networks
+* IEDs and incidents
+* genetics
+* risk models
+* VLSI cirtuit design
+* spanning tree protocol (STP) was implemented by Radia Joy Perlman while she was working for DEC to solve the problem of network loops
