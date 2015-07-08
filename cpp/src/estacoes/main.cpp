@@ -77,7 +77,7 @@ std::list<vertex_t> DijkstraGetShortestPathTo(
 
 int main() {
     // remember to insert edges both ways for an undirected graph
-    adjacency_list_t adjacency_list(69);
+    adjacency_list_t adjacency_list(9400);
     std::ifstream s("metros_sp.txt");
     int i,f,p;
     if(s.is_open()) {
@@ -89,32 +89,7 @@ int main() {
         }
     }
     s.close();
-    /*
-    // 0 = a
-    adjacency_list[0].push_back(neighbor(1, 7));
-    adjacency_list[0].push_back(neighbor(2, 9));
-    adjacency_list[0].push_back(neighbor(5, 14));
-    // 1 = b
-    adjacency_list[1].push_back(neighbor(0, 7));
-    adjacency_list[1].push_back(neighbor(2, 10));
-    adjacency_list[1].push_back(neighbor(3, 15));
-    // 2 = c
-    adjacency_list[2].push_back(neighbor(0, 9));
-    adjacency_list[2].push_back(neighbor(1, 10));
-    adjacency_list[2].push_back(neighbor(3, 11));
-    adjacency_list[2].push_back(neighbor(5, 2));
-    // 3 = d
-    adjacency_list[3].push_back(neighbor(1, 15));
-    adjacency_list[3].push_back(neighbor(2, 11));
-    adjacency_list[3].push_back(neighbor(4, 6));
-    // 4 = e
-    adjacency_list[4].push_back(neighbor(3, 6));
-    adjacency_list[4].push_back(neighbor(5, 9));
-    // 5 = f
-    adjacency_list[5].push_back(neighbor(0, 14));
-    adjacency_list[5].push_back(neighbor(2, 2));
-    adjacency_list[5].push_back(neighbor(4, 9));
-*/
+
     std::vector<weight_t> min_distance;
     std::vector<vertex_t> previous;
     int origem, destino;
@@ -123,9 +98,10 @@ int main() {
     std::cout << "Estacao destino: ";
     std::cin >> destino;
     DijkstraComputePaths(origem/*vértice inicial*/, adjacency_list/*grafo*/, min_distance, previous);
-    std::cout << "Distance from 0 to 4: " << min_distance[destino] << std::endl;
+    double tempo=min_distance[destino]/60;
+    std::cout << "Tempo medio de " << origem << " para "<< destino<<" eh " << tempo <<" minutos."<< std::endl;
     std::list<vertex_t> path = DijkstraGetShortestPathTo(destino, previous);
-    std::cout << "Path : ";
+    std::cout << "Caminho : ";
     std::copy(path.begin(), path.end(), std::ostream_iterator<vertex_t>(std::cout, " "));
     std::cout << std::endl;
 
